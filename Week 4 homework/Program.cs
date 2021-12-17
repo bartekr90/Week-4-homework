@@ -15,12 +15,6 @@ namespace Week_4_homework
                 Console.WriteLine(kee);
             }
 
-
-
-
-
-
-
         }
         /// <summary>
         /// Filters characters based on ASCII decimal values
@@ -29,7 +23,7 @@ namespace Week_4_homework
         /// <param name="hide">Optional hiding of characters </param>
         /// <param name="info">Console info after presing ENTER</param>
         /// <returns></returns>
-        private static string LetterValidation(int length = 25, bool hide = false, string info = "")
+        private static string LetterValidation(int length = 25, bool hide = false, string info = "Accepted: ")
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             bool loop = true;
@@ -59,7 +53,7 @@ namespace Week_4_homework
 
                 ReturnString:
                 loop = false;
-                Console.WriteLine(info);
+                Console.Write(info);
                 break;
 
             Append:
@@ -73,12 +67,14 @@ namespace Week_4_homework
                 continue;
 
             Remove:
+                
                 if (sb.Length > 0)
-                    sb.Remove(sb.Length - 1, 1);
+                    sb.Remove(sb.Length - 1, 1);                
                 continue;
 
             Clear:
                 sb.Clear();
+                Console.WriteLine();                
                 continue;
             }
 
