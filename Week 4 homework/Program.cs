@@ -6,80 +6,80 @@ namespace Week_4_homework
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            string kee;
-            while (true)
+            try
             {
-
-                kee = LetterValidation(50, false);
-                Console.WriteLine(kee);
-            }
-
-        }
-        /// <summary>
-        /// Filters characters based on ASCII decimal values
-        /// </summary>
-        /// <param name="length">Limit length of string</param>
-        /// <param name="hide">Optional hiding of characters </param>
-        /// <param name="info">Console info after presing ENTER</param>
-        /// <returns></returns>
-        private static string LetterValidation(int length = 25, bool hide = false, string info = "Accepted: ")
-        {
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            bool loop = true;
-            char keySign;
-            int castSign;
-
-            while (loop)
-            {
-                ConsoleKeyInfo keyInfo = Console.ReadKey(hide);
-                keySign = keyInfo.KeyChar;
-                castSign = (int)keySign;
-
-                if (castSign == 27)
-                    goto Clear;
-
-                if (castSign == 8)
-                    goto Remove;
-
-                if (castSign == 13)
-                    goto ReturnString;
-
-                if (castSign == 45 || (castSign > 64 && castSign < 91) || (castSign > 96 && castSign < 123) || (castSign > 127 && castSign < 168))
-                    goto Append;
-
-                else
-                    goto NotAppend;
-
-                ReturnString:
-                loop = false;
-                Console.Write(info);
-                break;
-
-            Append:
-                if (sb.Length < length)
+                Fizz_Buzz fiz1 = new Fizz_Buzz();
+                while (true)
                 {
-                    sb.Append(keySign);
+                    Console.WriteLine($"{DateTime.Now}");
+                    GetAppInfo();
+                    Console.WriteLine("Wybierz opcję z menu poprzez wciśnięcie odpowiedniej cyfry: ");
+                    Console.WriteLine("\t[1] - Sprawdzanie czy lizba jest parzysta");
+                    Console.WriteLine("\t[2] - Graz FizzBizz");
+                    Console.WriteLine("\t[3] - Dodanie swoich danych");
+                    Console.WriteLine("\t[4] - Zakończ");
+                    string menu = Console.ReadLine();
+                    switch (menu)
+                    {
+                        case "1":
+                            Console.Clear();
+                            Console.WriteLine("Podaj liczbę całkowitą");
+                            Console.WriteLine(Make.IsItEven(Console.ReadLine()));
+                            Console.Read();
+                            Console.Clear();
+                            break;
+                        case "2":
+                            Console.Clear();
+                            Console.WriteLine("Podaj liczbę całkowitą");
+                            Console.WriteLine(fiz1.FizzBuzz(Console.ReadLine()));
+                            Console.Read();
+                            Console.Clear();
+                            break;
+                        case "3":
+                            Person person = new Person();
+                            Console.Clear();
+                            person.PersonIntro();
+                            Console.Read();
+                            Console.Clear();
+                            break;
+                        case "4":
+                            PrintColorMessage(ConsoleColor.Red, "KONIEC PROGRAMU");
+                            return;
+                        default:
+                            break;
+                    }
+                    Console.Clear();
                 }
-                continue;
-
-            NotAppend:
-                continue;
-
-            Remove:
-                
-                if (sb.Length > 0)
-                    sb.Remove(sb.Length - 1, 1);                
-                continue;
-
-            Clear:
-                sb.Clear();
-                Console.WriteLine();                
-                continue;
             }
-
-            return sb.ToString();
+            catch (Exception ex)
+            {
+                Console.Clear();
+                Console.WriteLine("Wystąpił błąd danych: " + ex.Message);
+            }
+            finally
+            {
+                Console.Read();
+            }
         }
+
+        static void GetAppInfo()
+        {
+            string appName = "Sprawdzanie liczb FizzBuzz";
+            int appVersion = 2;
+            string appAutor = "Bartosz Rachwał";
+            PrintColorMessage(ConsoleColor.Magenta, $"[{appName}] Werjsa 0.0.{appVersion}, Autor: {appAutor}");
+        }
+
+        static void PrintColorMessage(ConsoleColor color, string message)
+        {
+            Console.ForegroundColor = color;
+            Console.WriteLine(message);
+            Console.ResetColor();
+        }
+
+
 
     }
+
+
 }
