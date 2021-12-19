@@ -41,7 +41,7 @@ namespace Week_4_homework
 
                 ReturnString:
                 loop = false;
-                PrintColorMessage(ConsoleColor.Green, info);                
+                PrintColorMessage(ConsoleColor.Green, ($"{info}"));                
                 break;
 
             Append:
