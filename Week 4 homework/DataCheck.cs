@@ -16,13 +16,13 @@ namespace Week_4_homework
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             bool loop = true;
             char keySign;
-            int castSign;
+            byte castSign;
 
             while (loop)
             {
                 ConsoleKeyInfo keyInfo = Console.ReadKey(hide);
                 keySign = keyInfo.KeyChar;
-                castSign = (int)keySign;
+                castSign = (byte)keySign;
 
                 if (castSign == 27)
                     goto Clear;
