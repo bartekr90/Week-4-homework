@@ -2,16 +2,9 @@
 
 namespace Week_4_homework
 {
-    class Fizz_Buzz
+    class FizzBuzz
     {
-        private string _Fizz { get; }
-        private string _Buzz { get; }
-        public Fizz_Buzz()
-        {
-            _Fizz = "Fizz";
-            _Buzz = "Buzz";
-        }
-        public string FizzBuzz(string value)
+        public string GetOutPut(string value)
         {
             int nr;
             while (true)
@@ -25,15 +18,14 @@ namespace Week_4_homework
                 }
                 break;
             }
-            string fibu = "";
-            if (nr % 3 == 0)
-                fibu += _Fizz;
-            if (nr % 5 == 0)
-                fibu += _Buzz;
-            if (String.IsNullOrEmpty(fibu) || (nr == 0))
-                fibu = value;
 
-            return fibu;
+            if (nr % 15 == 0)
+                return "FizzBuzz";
+            if (nr % 3 == 0)
+                return "Fizz";
+            if (nr % 5 == 0)
+                return "Buzz";
+            return value;
         }
         private static void PrintColorMessage(ConsoleColor color, string message)
         {

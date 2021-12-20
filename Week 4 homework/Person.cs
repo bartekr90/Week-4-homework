@@ -13,7 +13,7 @@ namespace Week_4_homework
         /// </summary>
         public Person()
         {
-            this.PersonSetup();
+            PersonSetup();
         }
 
         private void PersonSetup()
@@ -26,6 +26,7 @@ namespace Week_4_homework
                 if (String.IsNullOrEmpty(name))
                     PrintColorMessage(ConsoleColor.Red, "Nie podano imienia!");
             } while (String.IsNullOrEmpty(name));
+
             Console.WriteLine(name);
 
             Console.WriteLine("Podaj miejsce urodzenia (ograniczenia: max 20 znaków, tylko liery i znak '-'): ");
@@ -36,6 +37,7 @@ namespace Week_4_homework
                 if (String.IsNullOrEmpty(place))
                     PrintColorMessage(ConsoleColor.Red, "Nie podano miejsca!");
             } while (String.IsNullOrEmpty(place));
+
             Console.WriteLine(place);
 
             Console.WriteLine("Podaj miesiąc swoich urodzin (wartości z przedziału 1-12): ");
@@ -48,21 +50,21 @@ namespace Week_4_homework
             Console.WriteLine($"Podaj dzień miesiąca swoich urodzin (wartości od 1 do {DateTime.DaysInMonth(year, month)}: ");
             int day = DateValidation(Console.ReadLine(), 1, DateTime.DaysInMonth(year, month));
 
-            this._nameOfPerson = name;
-            this._placeOfbirth = place;
-            this._ageOfPerson = new DateTime(year, month, day);
+            _nameOfPerson = name;
+            _placeOfbirth = place;
+            _ageOfPerson = new DateTime(year, month, day);
         }
 
         public void PersonIntro()
         {
-            var age = DateTime.Now.Year - this._ageOfPerson.Year;
-            if (DateTime.Now.DayOfYear < this._ageOfPerson.DayOfYear)
+            var age = DateTime.Now.Year - _ageOfPerson.Year;
+            if (DateTime.Now.DayOfYear < _ageOfPerson.DayOfYear)
                 age--;
 
             Console.Write("Cześć ");
-            PrintColorMessage(ConsoleColor.Blue, this._nameOfPerson);
+            PrintColorMessage(ConsoleColor.Blue, _nameOfPerson);
             Console.Write(", urodziłeś się w ");
-            PrintColorMessage(ConsoleColor.DarkGreen, this._placeOfbirth);
+            PrintColorMessage(ConsoleColor.DarkGreen, _placeOfbirth);
             Console.Write(", Twoja data urodzin: ");
             PrintColorMessage(ConsoleColor.DarkRed, $"{_ageOfPerson.Date}");
             Console.Write(", a Twój wiek to: ");
@@ -80,7 +82,7 @@ namespace Week_4_homework
                     value = Console.ReadLine();
                     continue;
                 }
-                if (!((nr >= min) && (nr <= max)))
+                if ((nr < min) || (nr > max))
                 {
                     Console.WriteLine("Wiek nie spełnia wymagań, wartości są spoza zakresu");
                     value = Console.ReadLine();

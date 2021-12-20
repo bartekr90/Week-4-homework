@@ -8,7 +8,7 @@ namespace Week_4_homework
         {
             try
             {
-                Fizz_Buzz fiz1 = new Fizz_Buzz();
+                FizzBuzz fiz1 = new FizzBuzz();
                 while (true)
                 {
                     Console.WriteLine($"{DateTime.Now}");
@@ -31,7 +31,7 @@ namespace Week_4_homework
                         case "2":
                             Console.Clear();
                             Console.WriteLine("Podaj liczbę całkowitą");
-                            Console.WriteLine(fiz1.FizzBuzz(Console.ReadLine()));
+                            Console.WriteLine(fiz1.GetOutPut(Console.ReadLine()));
                             Console.Read();
                             Console.Clear();
                             break;
